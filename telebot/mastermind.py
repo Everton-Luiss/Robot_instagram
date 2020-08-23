@@ -699,7 +699,7 @@ def cancel(update, context):
 def main():
     #TOKEN="1368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT00"
     #updater = Updater(token=TOKEN, use_context=True)
-    dispatcher = updater.dispatcher
+    #dispatcher = updater.dispatcher
 
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('start', start), CommandHandler('cancelar', cancel)],
