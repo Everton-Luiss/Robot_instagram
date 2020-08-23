@@ -7,7 +7,6 @@ import random
 import os
 from flask import Flask, request, make_response
 import json
-from telebot.credentials import bot_token
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
@@ -698,7 +697,7 @@ def cancel(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Pena que você já vai. \n\nSe precisar de mim é só chamar!!!")
     return ConversationHandler.END
 def main():
-    TOKEN=bot_token
+    TOKEN="1368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT00"
     updater = Updater(token=TOKEN, use_context=True)
     dispatcher = updater.dispatcher
 
