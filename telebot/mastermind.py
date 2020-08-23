@@ -16,7 +16,7 @@ FOLLOW_BY_PROFILE, FOLLOW_PROFILE2, FOLLOW_BY_PROFILE2, CANCEL, OPTIONS_LIKE, OP
 data = []
 
 def get_response(msg):
-    return 'ok'
+    return start
 
 def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Olá, me chamo Ana. Sou seu robô assistente e vou te ajudar a ter mais seguidores no instagram! Vamos começar?")
