@@ -35,7 +35,6 @@ def begin(update, context):
         context.bot.send_message(chat_id=update.effective_chat.id, text="Desculpe, não entendi! Digite /start para reiniciar.")
         return ConversationHandler.END
 
-
 def login(user_input):
     answer = "Seu login é: " + user_input + '. \n\nAgora digite sua senha: \n\n(para sair digite /cancel)'
     data.insert(0, user_input)
