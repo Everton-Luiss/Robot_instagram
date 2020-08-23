@@ -697,9 +697,9 @@ def cancel(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Pena que você já vai. \n\nSe precisar de mim é só chamar!!!")
     return ConversationHandler.END
 def main():
-    #TOKEN="1368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT00"
-    #updater = Updater(token=TOKEN, use_context=True)
-    #dispatcher = updater.dispatcher
+    TOKEN = '1368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT0'
+    updater = Updater(token=TOKEN, use_context=True)
+    dispatcher = updater.dispatcher
 
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('start', start), CommandHandler('cancelar', cancel)],
@@ -727,6 +727,8 @@ def main():
     fallbacks=[CommandHandler('start', cancel)]
     )
 
-   # dispatcher.add_handler(conv_handler)
-   # updater.start_polling()
-main()
+   dispatcher.add_handler(conv_handler)
+   updater.start_polling()
+
+if __name__ == '__main__':
+    main()
