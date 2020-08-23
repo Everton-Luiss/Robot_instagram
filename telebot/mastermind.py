@@ -727,6 +727,6 @@ def main():
     fallbacks=[CommandHandler('start', cancel)]
     )
 
-    dispatcher.add_handler(conv_handler)
-    updater.start_polling()
+   # dispatcher.add_handler(conv_handler)
+   # updater.start_polling()
 main()
