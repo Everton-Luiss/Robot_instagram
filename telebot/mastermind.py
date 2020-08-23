@@ -697,8 +697,8 @@ def cancel(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Pena que você já vai. \n\nSe precisar de mim é só chamar!!!")
     return ConversationHandler.END
 def main():
-    TOKEN="1368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT00"
-    updater = Updater(token=TOKEN, use_context=True)
+    #TOKEN="1368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT00"
+    #updater = Updater(token=TOKEN, use_context=True)
     dispatcher = updater.dispatcher
 
     conv_handler = ConversationHandler(
