@@ -6,7 +6,6 @@ import time
 import random
 import os
 from flask import Flask, request, make_response
-from telebot.credentials import bot_token
 import json
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
