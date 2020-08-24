@@ -692,6 +692,7 @@ def follow_by_profile2(update, context):
                                       "Digite 4 para seguir por localização\n\n"\
                                       "Para cancelar digite sair")
         return OPTIONS_FOLLOW
+
 def cancel(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Pena que você já vai. \n\nSe precisar de mim é só chamar!!!")
     return ConversationHandler.END
