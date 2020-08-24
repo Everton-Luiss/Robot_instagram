@@ -6,11 +6,10 @@ from telebot.mastermind import main
 app = Flask(__name__)
 @app.route('/respond', methods=['POST'])
 def respond():
-    text = update.message.text.encode('utf-8').decode()
-    if text=="/start":
-        print('iniciando')
-        return main
-    return 'Respond'
+    #text = update.message.text.encode('utf-8').decode()
+    #if text=="/start":
+    print('iniciando')
+    return main
 
 '''@app.route('/setwebhook', methods=['GET', 'POST'])
 def set_webhook():
