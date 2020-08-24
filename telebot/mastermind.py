@@ -203,7 +203,6 @@ def options_coment(update, context):
                                       "Digite 2 para comentar fotos de alguma hashtag\n"
                                       "Para cancelar digite sair")
         return OPTIONS_COMENT
-
 def comenta_fotos(update,context):
     response_hashtag = (update.message.text).upper()
     if response_hashtag == "SIM" or response_hashtag == "S" or response_hashtag == "PODEMOS":
