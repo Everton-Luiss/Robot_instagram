@@ -6,19 +6,9 @@ from telebot.mastermind import main
 app = Flask(__name__)
 @app.route('/respond', methods=['POST'])
 def respond():
-    #text = update.message.text.encode('utf-8').decode()
-    #if text=="/start":
     print('iniciando')
     return main
 
-'''@app.route('/setwebhook', methods=['GET', 'POST'])
-def set_webhook():
-    s = bot.setWebhook('{URL}{HOOK}'.format(URL=URL, HOOK=TOKEN))
-    if s:
-        return "webhook setup ok"
-    else:
-        return "webhook setup failed"
-'''
 @app.route('/')
 def index():
     return 'Robot-Instagram'
