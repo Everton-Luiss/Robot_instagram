@@ -728,7 +728,7 @@ def main():
     )
 
     dispatcher.add_handler(conv_handler)
-    updater.start_webhook()
+    updater.start_polling()
 
 #if __name__ == '__main__':
 main()
