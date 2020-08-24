@@ -728,7 +728,8 @@ def main():
     )
 
     dispatcher.add_handler(conv_handler)
-    updater.start_polling()
+    updater.start_webhook(listen='127.0.0.1', port=5000, url_path=TOKEN)
+#    updater.start_polling()
 
 #if __name__ == '__main__':
 main()
