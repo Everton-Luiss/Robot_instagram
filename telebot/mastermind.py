@@ -515,6 +515,9 @@ def options_follow(update, context):
             driver.find_element_by_xpath("//button[contains(text(), 'Not Now')]") \
                 .click()
             time.sleep(3)
+            context.bot.send_message(chat_id=update.effective_chat.id,
+                                     text=f"Entrei na página de susgestões do instagram... Vou seguir {data[2]} pessoas pra você! ")
+            time.sleep(1)
             driver.get("https://www.instagram.com/explore/people/suggested/")
             time.sleep(2)
             for i in range(int(data[2])):
@@ -529,7 +532,7 @@ def options_follow(update, context):
                                      text=f"Erro: {e.__class__}")
         finally:
             context.bot.send_message(chat_id=update.effective_chat.id,
-                                     text=f"Acabei de seguir {count_follow} pessoas pra você. Deseja fazer mais alguma coisa?\n\n" \
+                                     text=f"Pronto! Acabei de seguir {count_follow} pessoas pra você. Deseja fazer mais alguma coisa?\n\n" \
                                           "Digite 1 para seguir, 2 para curtir e 3 para comentar")
             return OPTIONS
     elif response_option_follow == '2':
@@ -593,6 +596,9 @@ def follow_by_profile(update, context):
                                           f"Bora começar novamente?")
             return BEGIN
         try:
+            context.bot.send_message(chat_id=update.effective_chat.id,
+                                     text=f"Entrei na página de susgestões do instagram... Vou seguir {data[2]} pessoas pra você! ")
+            time.sleep(1)
             driver.get("https://www.instagram.com/"+ data[3] +"/followers/?hl=pt-br")
             time.sleep(3)
             for i in range(int(data[2])):
@@ -607,7 +613,7 @@ def follow_by_profile(update, context):
             print(e)
         finally:
             context.bot.send_message(chat_id=update.effective_chat.id,
-                                     text=f"Acabei de seguir {count_follow} pessoas pra você. Deseja fazer mais alguma coisa?\n\n" \
+                                     text=f"Pronto! Acabei de seguir {count_follow} pessoas pra você. Deseja fazer mais alguma coisa?\n\n" \
                                           "Digite 1 para seguir, 2 para curtir e 3 para comentar")
             return OPTIONS
     elif response_follow_profile == "NÃO" or response_follow_profile == "N":
@@ -660,6 +666,9 @@ def follow_by_profile2(update, context):
                                           f"Bora começar novamente?")
             return BEGIN
         try:
+            context.bot.send_message(chat_id=update.effective_chat.id,
+                                     text=f"Entrei na página de susgestões do instagram... Vou seguir {data[2]} pessoas pra você! ")
+            time.sleep(1)
             driver.get("https://www.instagram.com/"+ data[3] +"/")
             time.sleep(3)
             element = driver.find_element_by_xpath('//a[@href="/'+ data[3] +'/followers/"]')
@@ -677,7 +686,7 @@ def follow_by_profile2(update, context):
                                      text=f"Erro: {e.__class__}")
         finally:
             context.bot.send_message(chat_id=update.effective_chat.id,
-                                     text=f"Acabei de seguir {count_follow} pessoas pra você. Deseja fazer mais alguma coisa?\n\n" \
+                                     text=f"Pronto! Acabei de seguir {count_follow} pessoas pra você. Deseja fazer mais alguma coisa?\n\n" \
                                           "Digite 1 para seguir, 2 para curtir e 3 para comentar")
             return OPTIONS
     elif response_follow_profile == "NÃO" or response_follow_profile == "N":
