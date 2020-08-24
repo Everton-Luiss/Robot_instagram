@@ -334,9 +334,12 @@ def options_like(update, context):
             return BEGIN
         try:
             for c in range(2):
+                driver.get("https://instagram.com")
+                time.sleep(2)
+            '''for c in range(2):
                 driver.find_element_by_xpath("//button[contains(text(), 'Not Now')]") \
                     .click()
-                time.sleep(2)
+                time.sleep(2)'''
             context.bot.send_message(chat_id=update.effective_chat.id,
                                      text=f"Eu tô dando uma olhada aqui no seu feed procurando as melhores fotos pra curtir...")
             for p in range(5):
