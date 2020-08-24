@@ -18,9 +18,9 @@ def set_webhook():
     else:
         return "webhook setup failed"
 '''
-'''@app.route('/')
+@app.route('/')
 def index():
     return 'Robot-Instagram'
-'''
+
 if __name__ == '__main__':
     app.run(threaded=True)
