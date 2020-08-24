@@ -4,7 +4,7 @@ from telebot.credentials import bot_token, bot_user_name,URL
 from telebot.mastermind import main
 
 app = Flask(__name__)
-@app.route('/{}'.format(TOKEN), methods=['POST'])
+@app.route('/respond', methods=['POST'])
 def respond():
     main()
 
@@ -18,9 +18,9 @@ def set_webhook():
     else:
         return "webhook setup failed"
 '''
-@app.route('/')
+'''@app.route('/')
 def index():
     return 'Robot-Instagram'
-
+'''
 if __name__ == '__main__':
-    app.run()
+    app.run(threaded=True)
