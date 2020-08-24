@@ -6,6 +6,7 @@ import time
 import random
 import os
 from flask import Flask, request, make_response
+from telebot.credentials import bot_token
 import json
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -697,7 +698,7 @@ def cancel(update, context):
     return ConversationHandler.END
 
 def main():
-    TOKEN='1368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT0'
+    TOKEN=bot_token
     updater = Updater(token=TOKEN, use_context=True)
     dispatcher = updater.dispatcher
 

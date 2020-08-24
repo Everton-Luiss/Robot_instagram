@@ -4,8 +4,9 @@ from telebot.credentials import bot_token, bot_user_name,URL
 from telebot.mastermind import start
 
 global bot
-#global TOKEN
-TOKEN = "11368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT0"
+global TOKEN
+
+TOKEN = bot_token
 bot = telegram.Bot(token=TOKEN)
 
 app = Flask(__name__)
