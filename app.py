@@ -15,11 +15,11 @@ def respond():
     msg_id = update.message.message_id
     text = update.message.text.encode('utf-8').decode()
     print("got text message :", text)
-    if text=='/start':
+    if text == '/start':
         print('iniciando')
         return main
     else:
-        error='Digite /start'
+        error = 'Digite /start'
         bot.sendMessage(chat_id=chat_id, text=error, reply_to_message_id=msg_id)
     return 'Ok go!'
 
