@@ -7,7 +7,7 @@ TOKEN = '11368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT0'
 URL = 'https://robot-instagran.herokuapp.com/'
 
 app = Flask(__name__)
-@app.route('/{}'.format(TOKEN), methods=['POST'])
+@app.route('/respond', methods=['POST'])
 #@app.route('/respond', methods=['POST'])
 def respond():
     update = telegram.Update.de_json(request.get_json(force=True), bot)
