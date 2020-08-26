@@ -12,6 +12,8 @@ bot = telegram.Bot(token=TOKEN)
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
 logger = logging.getLogger(__name__)
+OPTIONS, BEGIN, LOGIN, SENHA, COMENTARIOS, HASH_COMENT, HASH_CURTIR, CURTE_FOTOS, OPTIONS_FOLLOW, FOLLOW_PROFILE,\
+FOLLOW_BY_PROFILE, FOLLOW_PROFILE2, FOLLOW_BY_PROFILE2, CANCEL, OPTIONS_LIKE, OPTIONS_COMENT, NUM_FOLLOW = range(17)
 
 app = Flask(__name__)
 
