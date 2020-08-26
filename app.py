@@ -15,7 +15,20 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
-def reply_handler():
+@app.route('/hook', methods=['POST'])
+def webhook_handler():
+    """Set route /hook with POST method will trigger this method."""
+    if request.method == "POST":
+        update = telegram.Update.de_json(request.get_json(force=True), bot)
+        dispatcher.process_update(update)
+
+    return 'ok'
+
+@app.route('/')
+def index():
+    return '.'
+
+if __name__ == '__main__':
     updater = Updater(token=TOKEN, use_context=True)
     dispatcher = updater.dispatcher
 
@@ -31,7 +44,7 @@ def reply_handler():
             COMENTARIOS: [MessageHandler(Filters.text, comenta_fotos)],
             HASH_COMENT: [MessageHandler(Filters.text, reply_hash_coment)],
             HASH_CURTIR: [MessageHandler(Filters.text, reply_hashtag_curtir)],
-            CURTE_FOTOS:[MessageHandler(Filters.text, curte_fotos)],
+            CURTE_FOTOS: [MessageHandler(Filters.text, curte_fotos)],
             OPTIONS_FOLLOW: [MessageHandler(Filters.text, options_follow)],
             FOLLOW_PROFILE: [MessageHandler(Filters.text, reply_follow_profile)],
             FOLLOW_BY_PROFILE: [MessageHandler(Filters.text, follow_by_profile)],
@@ -41,23 +54,8 @@ def reply_handler():
             OPTIONS_LIKE: [MessageHandler(Filters.text, options_like)],
             OPTIONS_COMENT: [MessageHandler(Filters.text, options_coment)],
             NUM_FOLLOW: [MessageHandler(Filters.text, reply_num_follow)],
-    },
-    fallbacks=[CommandHandler('cancel', cancel)]
+        },
+        fallbacks=[CommandHandler('cancel', cancel)]
     )
     dispatcher.add_handler(conv_handler)
-
-@app.route('/hook', methods=['POST'])
-def webhook_handler():
-    """Set route /hook with POST method will trigger this method."""
-    if request.method == "POST":
-        update = telegram.Update.de_json(request.get_json(force=True), bot)
-        dispatcher.process_update(update)
-
-    return 'ok'
-
-@app.route('/')
-def index():
-    return '.'
-
-if __name__ == '__main__':
     app.run(threaded=True)
