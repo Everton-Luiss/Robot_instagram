@@ -1,5 +1,4 @@
 from flask import Flask, request
-import configparser
 from telegram.ext import MessageHandler, Filters, Updater, CommandHandler, ConversationHandler
 import telegram
 import logging
@@ -7,10 +6,8 @@ import logging
 from telebot.mastermind import (start, begin, reply,reply_senha, cancel, options, comenta_fotos, reply_hash_coment, reply_hashtag_curtir,
 curte_fotos, options_follow, reply_follow_profile, follow_by_profile, reply_follow_profile2, follow_by_profile2, options_like, options_coment, reply_num_follow)
 
-config = configparser.ConfigParser()
-config.read('config.ini')
 
-bot = telegram.Bot(token=(config['TELEGRAM']['ACCESS_TOKEN']))
+bot = telegram.Bot(token=TOKEN)
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
@@ -19,19 +16,11 @@ OPTIONS, BEGIN, LOGIN, SENHA, COMENTARIOS, HASH_COMENT, HASH_CURTIR, CURTE_FOTOS
 FOLLOW_BY_PROFILE, FOLLOW_PROFILE2, FOLLOW_BY_PROFILE2, CANCEL, OPTIONS_LIKE, OPTIONS_COMENT, NUM_FOLLOW = range(17)
 
 app = Flask(__name__)
-
-@app.route('/hook', methods=['POST'])
-def webhook_handler():
-    """Set route /hook with POST method will trigger this method."""
-    if request.method == "POST":
-        update = telegram.Update.de_json(request.get_json(force=True), bot)
-        dispatcher.process_update(update)
-    return 'ok'
-
+app.route('/respond')
 def respond():
-    #updater = Updater(token=TOKEN, use_context=True)
-    #dispatcher = updater.dispatcher
-    dispatcher = Dispatcher(bot, None)
+    updater = Updater(token=TOKEN, use_context=True)
+    dispatcher = updater.dispatcher
+
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('start', start), CommandHandler('cancelar', cancel)],
         states={
@@ -58,6 +47,7 @@ def respond():
         fallbacks=[CommandHandler('cancel', cancel)]
     )
     dispatcher.add_handler(conv_handler)
+    updater.start_polling()
 
 if __name__ == '__main__':
     app.run(threaded=True)
