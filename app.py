@@ -5,7 +5,6 @@ import logging
 #from telebot.credentials import bot_token, bot_user_name,URL
 from telebot.mastermind import (start, begin, reply,reply_senha, cancel, options, comenta_fotos, reply_hash_coment, reply_hashtag_curtir,
 curte_fotos, options_follow, reply_follow_profile, follow_by_profile, reply_follow_profile2, follow_by_profile2, options_like, options_coment, reply_num_follow)
-from telebot.credentials import bot_token, bot_user_name,URL
 
 TOKEN = '11368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT0'
 bot = telegram.Bot(token=TOKEN)
@@ -45,19 +44,15 @@ def reply_handler():
     },
     fallbacks=[CommandHandler('cancel', cancel)]
     )
-
-
-    #updater.start_polling()
+    dispatcher.add_handler(conv_handler)
 
 @app.route('/hook', methods=['POST'])
 def webhook_handler():
     """Set route /hook with POST method will trigger this method."""
     if request.method == "POST":
-        conv_handler = telegram.Update.de_json(request.get_json(force=True), bot)
+        update = telegram.Update.de_json(request.get_json(force=True), bot)
+        dispatcher.process_update(update)
 
-        # Update dispatcher process that handler to process this message
-        #dispatcher.process_update(update)
-        dispatcher.add_handler(conv_handler)
     return 'ok'
 
 @app.route('/')

@@ -15,10 +15,6 @@ OPTIONS, BEGIN, LOGIN, SENHA, COMENTARIOS, HASH_COMENT, HASH_CURTIR, CURTE_FOTOS
 FOLLOW_BY_PROFILE, FOLLOW_PROFILE2, FOLLOW_BY_PROFILE2, CANCEL, OPTIONS_LIKE, OPTIONS_COMENT, NUM_FOLLOW = range(17)
 data = []
 
-def get_response(msg):
-
-    return main
-
 def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Olá, me chamo Ana. Sou seu robô assistente e vou te ajudar a ter mais seguidores no instagram! Vamos começar?")
     return BEGIN
