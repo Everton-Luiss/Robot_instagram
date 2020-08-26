@@ -17,7 +17,14 @@ FOLLOW_BY_PROFILE, FOLLOW_PROFILE2, FOLLOW_BY_PROFILE2, CANCEL, OPTIONS_LIKE, OP
 
 app = Flask(__name__)
 
-@app.route('/{}'.format(TOKEN), methods=['POST'])
+@app.route('/hook', methods=['POST'])
+def webhook_handler():
+    """Set route /hook with POST method will trigger this method."""
+    if request.method == "POST":
+        update = telegram.Update.de_json(request.get_json(force=True), bot)
+        dispatcher.process_update(update)
+    return 'ok'
+
 def respond():
     #updater = Updater(token=TOKEN, use_context=True)
     #dispatcher = updater.dispatcher
@@ -48,18 +55,6 @@ def respond():
         fallbacks=[CommandHandler('cancel', cancel)]
     )
     dispatcher.add_handler(conv_handler)
-
-@app.route('/hook', methods=['POST'])
-def webhook_handler():
-    """Set route /hook with POST method will trigger this method."""
-    if request.method == "POST":
-        update = telegram.Update.de_json(request.get_json(force=True), bot)
-        dispatcher.process_update(update)
-    return 'ok'
-
-@app.route('/')
-def index():
-    return '.'
 
 if __name__ == '__main__':
     app.run(threaded=True)
