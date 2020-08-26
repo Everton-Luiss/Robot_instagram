@@ -30,7 +30,7 @@ def webhook_handler():
 def index():
     return '.'
 
-if __name__ == '__main__':
+def reply_handler():
     updater = Updater(token=TOKEN, use_context=True)
     dispatcher = updater.dispatcher
 
@@ -60,4 +60,6 @@ if __name__ == '__main__':
         fallbacks=[CommandHandler('cancel', cancel)]
     )
     dispatcher.add_handler(conv_handler)
-    #app.run(threaded=True)
+
+if __name__ == '__main__':
+    app.run(threaded=True)
