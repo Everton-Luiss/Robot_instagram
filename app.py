@@ -19,9 +19,9 @@ app = Flask(__name__)
 
 @app.route('/{}'.format(TOKEN), methods=['POST'])
 def respond():
-    updater = Updater(token=TOKEN, use_context=True)
-    dispatcher = updater.dispatcher
-
+    #updater = Updater(token=TOKEN, use_context=True)
+    #dispatcher = updater.dispatcher
+    dispatcher = Dispatcher(bot, None)
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('start', start), CommandHandler('cancelar', cancel)],
         states={
