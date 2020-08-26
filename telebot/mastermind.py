@@ -735,7 +735,7 @@ def main():
     )
 
     dispatcher.add_handler(conv_handler)
-    #updater.start_polling()
+    updater.start_polling()
 
 main()
 
