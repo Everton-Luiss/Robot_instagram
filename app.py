@@ -7,7 +7,7 @@ from telebot.mastermind import main
 
 app = Flask(__name__)
 
-app.route('/respond')
+@app.route('/respond')
 def respond():
     print('iniciando')
     return main
