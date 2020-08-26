@@ -5,7 +5,6 @@ import logging
 #from telebot.credentials import bot_token, bot_user_name,URL
 from telebot.mastermind import main
 
-bot = telegram.Bot(token=TOKEN)
 app = Flask(__name__)
 
 app.route('/respond')
