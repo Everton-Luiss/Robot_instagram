@@ -1,7 +1,6 @@
 from telegram.ext import MessageHandler, Filters, Updater, CommandHandler, ConversationHandler
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
-from flask import Flask, request
 import logging
 import time
 import random
@@ -14,11 +13,7 @@ logger = logging.getLogger(__name__)
 OPTIONS, BEGIN, LOGIN, SENHA, COMENTARIOS, HASH_COMENT, HASH_CURTIR, CURTE_FOTOS, OPTIONS_FOLLOW, FOLLOW_PROFILE,\
 FOLLOW_BY_PROFILE, FOLLOW_PROFILE2, FOLLOW_BY_PROFILE2, CANCEL, OPTIONS_LIKE, OPTIONS_COMENT, NUM_FOLLOW = range(17)
 data = []
-app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return '.'
 def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Olá, me chamo Ana. Sou seu robô assistente e vou te ajudar a ter mais seguidores no instagram! Vamos começar?")
     return BEGIN
@@ -742,6 +737,5 @@ def main():
     dispatcher.add_handler(conv_handler)
     updater.start_polling()
 
-if __name__ == '__main__':
-    app.run(threaded=True)
+main()
 
