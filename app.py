@@ -18,7 +18,7 @@ def respond():
     text = update.message.text.encode('utf-8').decode()
     print("got text message :", text)
 
-    response = main()
+    response = main
     bot.sendMessage(chat_id=chat_id, text=response)
 
     return 'ok'
