@@ -17,7 +17,6 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
-bot = telegram.Bot(token=TOKEN)
 
 def reply_handler():
     updater = Updater(token=TOKEN, use_context=True)
