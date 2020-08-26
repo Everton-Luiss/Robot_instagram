@@ -17,7 +17,7 @@ FOLLOW_BY_PROFILE, FOLLOW_PROFILE2, FOLLOW_BY_PROFILE2, CANCEL, OPTIONS_LIKE, OP
 
 app = Flask(__name__)
 
-@app.rout('/respond')
+@app.route('/{}'.format(TOKEN), methods=['POST'])
 def respond():
     updater = Updater(token=TOKEN, use_context=True)
     dispatcher = updater.dispatcher
