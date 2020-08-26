@@ -1,4 +1,5 @@
 from flask import Flask, request
+import configparser
 from telegram.ext import MessageHandler, Filters, Updater, CommandHandler, ConversationHandler
 import telegram
 import logging
@@ -6,8 +7,10 @@ import logging
 from telebot.mastermind import (start, begin, reply,reply_senha, cancel, options, comenta_fotos, reply_hash_coment, reply_hashtag_curtir,
 curte_fotos, options_follow, reply_follow_profile, follow_by_profile, reply_follow_profile2, follow_by_profile2, options_like, options_coment, reply_num_follow)
 
-TOKEN = '11368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT0'
-bot = telegram.Bot(token=TOKEN)
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+bot = telegram.Bot(token=(config['TELEGRAM']['ACCESS_TOKEN']))
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
