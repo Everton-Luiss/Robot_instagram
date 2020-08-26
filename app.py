@@ -15,14 +15,6 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 bot = telegram.Bot(token=TOKEN)
 
-@app.route('/setwebhook', methods=['GET', 'POST'])
-def set_webhook():
-    s = bot.setWebhook('{URL}{HOOK}'.format(URL=URL, HOOK=TOKEN))
-    if s:
-        return "webhook setup ok"
-    else:
-        return "webhook setup failed"
-
 def reply_handler():
     updater = Updater(token=TOKEN, use_context=True)
     dispatcher = updater.dispatcher
@@ -55,6 +47,18 @@ def reply_handler():
 
     dispatcher.add_handler(conv_handler)
     #updater.start_polling()
+
+@app.route('/setwebhook', methods=['GET', 'POST'])
+def set_webhook():
+    s = bot.setWebhook('{URL}{HOOK}'.format(URL=URL, HOOK=TOKEN))
+    if s:
+        return "webhook setup ok"
+    else:
+        return "webhook setup failed"
+
+@app.route('/')
+def index():
+    return '.'
 
 if __name__ == '__main__':
     app.run(threaded=True)
