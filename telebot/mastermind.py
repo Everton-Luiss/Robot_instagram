@@ -1,18 +1,17 @@
-#from telegram.ext import MessageHandler, Filters, Updater, CommandHandler, ConversationHandler
+from telegram.ext import MessageHandler, Filters, Updater, CommandHandler, ConversationHandler
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 import logging
 import time
 import random
 import os
-#from flask import Flask, request, make_response
 import json
 
-'''logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
 logger = logging.getLogger(__name__)
 OPTIONS, BEGIN, LOGIN, SENHA, COMENTARIOS, HASH_COMENT, HASH_CURTIR, CURTE_FOTOS, OPTIONS_FOLLOW, FOLLOW_PROFILE,\
-FOLLOW_BY_PROFILE, FOLLOW_PROFILE2, FOLLOW_BY_PROFILE2, CANCEL, OPTIONS_LIKE, OPTIONS_COMENT, NUM_FOLLOW = range(17)'''
+FOLLOW_BY_PROFILE, FOLLOW_PROFILE2, FOLLOW_BY_PROFILE2, CANCEL, OPTIONS_LIKE, OPTIONS_COMENT, NUM_FOLLOW = range(17)
 data = []
 
 def start(update, context):
@@ -704,7 +703,7 @@ def cancel(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Pena que você já vai. \n\nSe precisar de mim é só chamar!!!")
     return ConversationHandler.END
 
-'''def main():
+def main():
     TOKEN='1368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT0'
     updater = Updater(token=TOKEN, use_context=True)
     dispatcher = updater.dispatcher
@@ -739,5 +738,5 @@ def cancel(update, context):
     updater.start_polling()
 
 #if __name__ == '__main__':
-   # main()'''
+main()
 
