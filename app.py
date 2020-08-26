@@ -1,7 +1,6 @@
 from flask import Flask, request
 from telegram.ext import MessageHandler, Filters, Updater, CommandHandler, ConversationHandler
 import telegram
-import logging
 #from telebot.credentials import bot_token, bot_user_name,URL
 from telebot.mastermind import main
 
