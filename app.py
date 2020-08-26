@@ -60,4 +60,4 @@ if __name__ == '__main__':
         fallbacks=[CommandHandler('cancel', cancel)]
     )
     dispatcher.add_handler(conv_handler)
-    app.run(threaded=True)
+    #app.run(threaded=True)
