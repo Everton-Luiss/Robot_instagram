@@ -3,7 +3,7 @@ from telegram.ext import MessageHandler, Filters, Updater, CommandHandler, Conve
 import telegram
 import logging
 #from telebot.credentials import bot_token, bot_user_name,URL
-from telebot import mastermind
+from telebot.mastermind import start, begin, reply
 
 TOKEN = '11368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT0'
 
@@ -29,29 +29,29 @@ def reply_handler():
     dispatcher = updater.dispatcher
 
     conv_handler = ConversationHandler(
-        entry_points=[CommandHandler('start', mastermind.start), CommandHandler('cancelar', mastermind.cancel)],
+        entry_points=[CommandHandler('start', start), CommandHandler('cancelar', cancel)],
         states={
-            BEGIN: [MessageHandler(Filters.text, mastermind.begin)],
-            LOGIN: [MessageHandler(Filters.text, mastermind.reply)],
+            BEGIN: [MessageHandler(Filters.text, begin)],
+            LOGIN: [MessageHandler(Filters.text, reply)],
 
-            SENHA: [MessageHandler(Filters.text, mastermind.reply_senha),
-                    CommandHandler('cancel', mastermind.cancel)],
-            OPTIONS: [MessageHandler(Filters.text, mastermind.options)],
-            COMENTARIOS: [MessageHandler(Filters.text, mastermind.comenta_fotos)],
-            HASH_COMENT: [MessageHandler(Filters.text, mastermind.reply_hash_coment)],
-            HASH_CURTIR: [MessageHandler(Filters.text, mastermind.reply_hashtag_curtir)],
-            CURTE_FOTOS:[MessageHandler(Filters.text, mastermind.curte_fotos)],
-            OPTIONS_FOLLOW: [MessageHandler(Filters.text, mastermind.options_follow)],
-            FOLLOW_PROFILE: [MessageHandler(Filters.text, mastermind.reply_follow_profile)],
-            FOLLOW_BY_PROFILE: [MessageHandler(Filters.text, mastermind.follow_by_profile)],
-            FOLLOW_PROFILE2: [MessageHandler(Filters.text, mastermind.reply_follow_profile2)],
-            FOLLOW_BY_PROFILE2: [MessageHandler(Filters.text, mastermind.follow_by_profile2)],
-            CANCEL: [MessageHandler(Filters.text, mastermind.cancel)],
+            SENHA: [MessageHandler(Filters.text, reply_senha),
+                    CommandHandler('cancel', cancel)],
+            OPTIONS: [MessageHandler(Filters.text, options)],
+            COMENTARIOS: [MessageHandler(Filters.text, comenta_fotos)],
+            HASH_COMENT: [MessageHandler(Filters.text, reply_hash_coment)],
+            HASH_CURTIR: [MessageHandler(Filters.text, reply_hashtag_curtir)],
+            CURTE_FOTOS:[MessageHandler(Filters.text, curte_fotos)],
+            OPTIONS_FOLLOW: [MessageHandler(Filters.text, options_follow)],
+            FOLLOW_PROFILE: [MessageHandler(Filters.text, reply_follow_profile)],
+            FOLLOW_BY_PROFILE: [MessageHandler(Filters.text, follow_by_profile)],
+            FOLLOW_PROFILE2: [MessageHandler(Filters.text, reply_follow_profile2)],
+            FOLLOW_BY_PROFILE2: [MessageHandler(Filters.text, follow_by_profile2)],
+            CANCEL: [MessageHandler(Filters.text, cancel)],
             OPTIONS_LIKE: [MessageHandler(Filters.text, options_like)],
-            OPTIONS_COMENT: [MessageHandler(Filters.text, mastermind.options_coment)],
-            NUM_FOLLOW: [MessageHandler(Filters.text, mastermind.reply_num_follow)],
+            OPTIONS_COMENT: [MessageHandler(Filters.text, options_coment)],
+            NUM_FOLLOW: [MessageHandler(Filters.text, reply_num_follow)],
     },
-    fallbacks=[CommandHandler('cancel', mastermind.cancel)]
+    fallbacks=[CommandHandler('cancel', cancel)]
     )
 
     dispatcher.add_handler(conv_handler)
