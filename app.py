@@ -3,7 +3,8 @@ from telegram.ext import MessageHandler, Filters, Updater, CommandHandler, Conve
 import telegram
 import logging
 #from telebot.credentials import bot_token, bot_user_name,URL
-from telebot.mastermind import start, begin, reply
+from telebot.mastermind import (start, begin, reply,reply_senha, cancel, options, comenta_fotos, reply_hash_coment, reply_hashtag_curtir,
+curte_fotos, options_follow, reply_follow_profile, follow_by_profile, reply_follow_profile2, follow_by_profile2, options_like, options_coment, reply_num_follow)
 
 TOKEN = '11368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT0'
 URL = 'https://robot-instagran.herokuapp.com/'
@@ -47,6 +48,7 @@ def reply_handler():
 
     dispatcher.add_handler(conv_handler)
     #updater.start_polling()
+    return 'Ok go!!'
 
 @app.route('/setwebhook', methods=['GET', 'POST'])
 def set_webhook():
