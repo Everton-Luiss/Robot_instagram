@@ -29,7 +29,7 @@ def reply_handler():
     dispatcher = updater.dispatcher
 
     conv_handler = ConversationHandler(
-        entry_points=[CommandHandler('start', start), CommandHandler('cancelar', cancel)],
+        entry_points=[CommandHandler('start', mastermind.start), CommandHandler('cancelar', mastermind.cancel)],
         states={
             BEGIN: [MessageHandler(Filters.text, mastermind.begin)],
             LOGIN: [MessageHandler(Filters.text, mastermind.reply)],
