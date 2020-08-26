@@ -6,17 +6,25 @@ import logging
 from telebot import mastermind
 
 TOKEN = '11368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT0'
+
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
 logger = logging.getLogger(__name__)
+
 app = Flask(__name__)
+bot = telegram.Bot(token=TOKEN)
 
-@app.route('/')
-def index():
-    return 'Robot-Instagram'
+@app.route('/hook', methods=['POST'])
+def webhook_handler():
+    """Set route /hook with POST method will trigger this method."""
+    if request.method == "POST":
+        update = telegram.Update.de_json(request.get_json(force=True), bot)
 
+        # Update dispatcher process that handler to process this message
+        dispatcher.process_update(update)
+    return 'ok'
 
-def main():
+def reply_handler():
     updater = Updater(token=TOKEN, use_context=True)
     dispatcher = updater.dispatcher
 
@@ -43,11 +51,11 @@ def main():
             OPTIONS_COMENT: [MessageHandler(Filters.text, mastermind.options_coment)],
             NUM_FOLLOW: [MessageHandler(Filters.text, mastermind.reply_num_follow)],
     },
-    fallbacks=[CommandHandler('start', mastermind.cancel)]
+    fallbacks=[CommandHandler('cancel', mastermind.cancel)]
     )
 
     dispatcher.add_handler(conv_handler)
-    updater.start_polling()
+    #updater.start_polling()
 
 if __name__ == '__main__':
     app.run(threaded=True)
