@@ -5,18 +5,19 @@ import logging
 import time
 import random
 import os
-from flask import Flask, request, make_response
+#from flask import Flask, request, make_response
 import json
 
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+'''logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)'''
 OPTIONS, BEGIN, LOGIN, SENHA, COMENTARIOS, HASH_COMENT, HASH_CURTIR, CURTE_FOTOS, OPTIONS_FOLLOW, FOLLOW_PROFILE,\
 FOLLOW_BY_PROFILE, FOLLOW_PROFILE2, FOLLOW_BY_PROFILE2, CANCEL, OPTIONS_LIKE, OPTIONS_COMENT, NUM_FOLLOW = range(17)
 data = []
 
 def get_response(msg):
-    return 'OK'
+
+    return main
 
 def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Olá, me chamo Ana. Sou seu robô assistente e vou te ajudar a ter mais seguidores no instagram! Vamos começar?")
@@ -707,7 +708,7 @@ def cancel(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Pena que você já vai. \n\nSe precisar de mim é só chamar!!!")
     return ConversationHandler.END
 
-def main():
+'''def main():
     TOKEN='1368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT0'
     updater = Updater(token=TOKEN, use_context=True)
     dispatcher = updater.dispatcher
@@ -742,5 +743,5 @@ def main():
     updater.start_polling()
 
 #if __name__ == '__main__':
-   # main()
+   # main()'''
 
