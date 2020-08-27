@@ -2,8 +2,7 @@ from flask import Flask, request
 from telegram.ext import MessageHandler, Filters, Updater, CommandHandler, ConversationHandler
 import telegram
 #from telebot.credentials import bot_token, bot_user_name,URL
-from main import updater
-from telebot.mastermind import main
+from telebot.mastermind import updater
 
 TOKEN = '11368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT0'
 URL = 'https://robot-instagran.herokuapp.com/'
