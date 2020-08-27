@@ -2,6 +2,7 @@ from flask import Flask, request
 from telegram.ext import MessageHandler, Filters, Updater, CommandHandler, ConversationHandler
 import telegram
 #from telebot.credentials import bot_token, bot_user_name,URL
+from main import updater
 from telebot.mastermind import main
 
 TOKEN = '11368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT0'
@@ -11,8 +12,9 @@ app = Flask(__name__)
 
 @app.route('/respond')
 def respond():
+    updater.start_polling()
     print('iniciando')
-    return main
+    return 'Ok go!'
 
 @app.route('/setwebhook', methods=['GET', 'POST'])
 def set_webhook():

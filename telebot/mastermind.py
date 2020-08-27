@@ -14,6 +14,10 @@ OPTIONS, BEGIN, LOGIN, SENHA, COMENTARIOS, HASH_COMENT, HASH_CURTIR, CURTE_FOTOS
 FOLLOW_BY_PROFILE, FOLLOW_PROFILE2, FOLLOW_BY_PROFILE2, CANCEL, OPTIONS_LIKE, OPTIONS_COMENT, NUM_FOLLOW = range(17)
 data = []
 
+TOKEN='1368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT0'
+updater = Updater(token=TOKEN, use_context=True)
+dispatcher = updater.dispatcher
+
 def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Olá, me chamo Ana. Sou seu robô assistente e vou te ajudar a ter mais seguidores no instagram! Vamos começar?")
     return BEGIN
@@ -703,39 +707,33 @@ def cancel(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Pena que você já vai. \n\nSe precisar de mim é só chamar!!!")
     return ConversationHandler.END
 
-def main():
-    TOKEN='1368978547:AAEoYdgxdm586q7tcF1xQT3OpL3SBZBNLT0'
-    updater = Updater(token=TOKEN, use_context=True)
-    dispatcher = updater.dispatcher
 
-    conv_handler = ConversationHandler(
-        entry_points=[CommandHandler('start', start), CommandHandler('cancelar', cancel)],
-        states={
-            BEGIN: [MessageHandler(Filters.text, begin)],
-            LOGIN: [MessageHandler(Filters.text, reply)],
 
-            SENHA: [MessageHandler(Filters.text, reply_senha),
-                    CommandHandler('cancel', cancel)],
-            OPTIONS: [MessageHandler(Filters.text, options)],
-            COMENTARIOS: [MessageHandler(Filters.text, comenta_fotos)],
-            HASH_COMENT: [MessageHandler(Filters.text, reply_hash_coment)],
-            HASH_CURTIR: [MessageHandler(Filters.text, reply_hashtag_curtir)],
-            CURTE_FOTOS:[MessageHandler(Filters.text, curte_fotos)],
-            OPTIONS_FOLLOW: [MessageHandler(Filters.text, options_follow)],
-            FOLLOW_PROFILE: [MessageHandler(Filters.text, reply_follow_profile)],
-            FOLLOW_BY_PROFILE: [MessageHandler(Filters.text, follow_by_profile)],
-            FOLLOW_PROFILE2: [MessageHandler(Filters.text, reply_follow_profile2)],
-            FOLLOW_BY_PROFILE2: [MessageHandler(Filters.text, follow_by_profile2)],
-            CANCEL: [MessageHandler(Filters.text, cancel)],
-            OPTIONS_LIKE: [MessageHandler(Filters.text, options_like)],
-            OPTIONS_COMENT: [MessageHandler(Filters.text, options_coment)],
-            NUM_FOLLOW: [MessageHandler(Filters.text, reply_num_follow)],
-    },
-    fallbacks=[CommandHandler('start', cancel)]
-    )
+conv_handler = ConversationHandler(
+    entry_points=[CommandHandler('start', start), CommandHandler('cancelar', cancel)],
+    states={
+        BEGIN: [MessageHandler(Filters.text, begin)],
+        LOGIN: [MessageHandler(Filters.text, reply)],
 
-    dispatcher.add_handler(conv_handler)
-    updater.start_polling()
+        SENHA: [MessageHandler(Filters.text, reply_senha),
+                CommandHandler('cancel', cancel)],
+        OPTIONS: [MessageHandler(Filters.text, options)],
+        COMENTARIOS: [MessageHandler(Filters.text, comenta_fotos)],
+        HASH_COMENT: [MessageHandler(Filters.text, reply_hash_coment)],
+        HASH_CURTIR: [MessageHandler(Filters.text, reply_hashtag_curtir)],
+        CURTE_FOTOS:[MessageHandler(Filters.text, curte_fotos)],
+        OPTIONS_FOLLOW: [MessageHandler(Filters.text, options_follow)],
+        FOLLOW_PROFILE: [MessageHandler(Filters.text, reply_follow_profile)],
+        FOLLOW_BY_PROFILE: [MessageHandler(Filters.text, follow_by_profile)],
+        FOLLOW_PROFILE2: [MessageHandler(Filters.text, reply_follow_profile2)],
+        FOLLOW_BY_PROFILE2: [MessageHandler(Filters.text, follow_by_profile2)],
+        CANCEL: [MessageHandler(Filters.text, cancel)],
+        OPTIONS_LIKE: [MessageHandler(Filters.text, options_like)],
+        OPTIONS_COMENT: [MessageHandler(Filters.text, options_coment)],
+        NUM_FOLLOW: [MessageHandler(Filters.text, reply_num_follow)],
+},
+fallbacks=[CommandHandler('start', cancel)]
+)
 
-main()
+dispatcher.add_handler(conv_handler)
 
