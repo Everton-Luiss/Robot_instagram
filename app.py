@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route('/respond')
 def respond():
-    updater.start_polling()
+    #updater.start_polling()
     print('iniciando')
     return 'Ok go!'
 
