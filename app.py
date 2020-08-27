@@ -9,12 +9,6 @@ URL = 'https://robot-instagran.herokuapp.com/'
 
 app = Flask(__name__)
 
-@app.route('/respond')
-def respond():
-    #updater.start_polling()
-    print('iniciando')
-    return 'Ok go!'
-
 @app.route('/setwebhook', methods=['GET', 'POST'])
 def set_webhook():
     s = bot.setWebhook('{URL}{HOOK}'.format(URL=URL, HOOK=TOKEN))
